@@ -1,5 +1,5 @@
-# Dannys's Diner
-1st case study of the 8 week sql challenge
+# Balanced Tree Clothing Company
+7th case study of the 8 week sql challenge
 
 query written in SQLITE
 

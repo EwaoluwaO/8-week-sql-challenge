@@ -1,9 +1,9 @@
-# Balanced Tree Clothing Company
-7th case study of the 8 week sql challenge
+# Dannys's Diner
+1st case study of the 8 week sql challenge
 
-query written in PostgreSQL
+query written in SQLITE
 
 
-Study case details and questions: https://8weeksqlchallenge.com/case-study-7/
+Study case details and questions: https://8weeksqlchallenge.com/case-study-1/
 
-![logocase](https://8weeksqlchallenge.com/images/case-study-designs/7.png)
+![logocase](https://8weeksqlchallenge.com/images/case-study-designs/1.png)

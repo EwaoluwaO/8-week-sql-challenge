@@ -6,4 +6,4 @@ query written in SQLITE
 
 Study case details and questions: https://8weeksqlchallenge.com/case-study-1/
 
-![logocase](https://8weeksqlchallenge.com/images/case-study-designs/1.png)
+![logocase](https://8weeksqlchallenge.com/images/case-study-designs/7.png)

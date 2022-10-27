@@ -139,38 +139,48 @@ SELECT
 FROM cte_summary;
 --How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?
 --for 4 weeks
-WITH cte_summary AS(
-SELECT
-    calendar_year,
-    SUM(CASE WHEN week_number BETWEEN 13 AND 24 THEN sales ELSE 0 END) sales_before,
-    SUM(CASE WHEN week_number BETWEEN 25 AND 36 THEN sales ELSE 0 END) sales_after
-FROM temp_weekly_sales
-GROUP BY calendar_year 
+with cte_summary as(
+select
+	calendar_year,
+	SUM(case when week_number between 21 and 24 then sales else 0 end) sales_before,
+	SUM(case when week_number between 25 and 28 then sales else 0 end) sales_after
+from
+	clean_weekly_sales
+group by
+	calendar_year 
 )
-SELECT 
-    calendar_year,
-    SUM(sales_before) total_before,
-    SUM(sales_after) total_after,
-    SUM(sales_after)-SUM(sales_before) difference,
-    ROUND(100*(SUM(sales_after)-SUM(sales_before))/SUM(sales_before),2) pct_change
-FROM cte_summary
-GROUP BY calendar_year 
-ORDER BY calendar_year;
+select
+	calendar_year,
+	SUM(sales_before) total_before,
+	SUM(sales_after) total_after,
+	SUM(sales_after)-SUM(sales_before) difference,
+	ROUND(100 *(SUM(sales_after)-SUM(sales_before))/ SUM(sales_before), 2) pct_change
+from
+	cte_summary
+group by
+	calendar_year
+order by
+	calendar_year;
 --for 12 weeks
-WITH cte_summary AS(
-SELECT
-    calendar_year,
-    SUM(CASE WHEN week_number BETWEEN 13 AND 24 THEN sales ELSE 0 END) sales_before,
-    SUM(CASE WHEN week_number BETWEEN 25 AND 36 THEN sales ELSE 0 END) sales_after
-FROM clean_weekly_sales
-GROUP BY calendar_year
+with cte_summary as(
+select
+	calendar_year,
+	SUM(case when week_number between 13 and 24 then sales else 0 end) sales_before,
+	SUM(case when week_number between 25 and 36 then sales else 0 end) sales_after
+from
+	clean_weekly_sales
+group by
+	calendar_year
 )
-SELECT 
-    calendar_year,
-    SUM(sales_before) total_before,
-    SUM(sales_after) total_after,
-    SUM(sales_after)-SUM(sales_before) difference,
-    ROUND(100*(SUM(sales_after)-SUM(sales_before))/SUM(sales_before),2) pct_change
-FROM cte_summary
-GROUP BY calendar_year
-ORDER BY calendar_year;
+select
+	calendar_year,
+	SUM(sales_before) total_before,
+	SUM(sales_after) total_after,
+	SUM(sales_after)-SUM(sales_before) difference,
+	ROUND(100 *(SUM(sales_after)-SUM(sales_before))/ SUM(sales_before), 2) pct_change
+from
+	cte_summary
+group by
+	calendar_year
+order by
+	calendar_year;

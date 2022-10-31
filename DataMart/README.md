@@ -70,8 +70,9 @@ select week_date, to_char(week_date,'Day')
 from clean_weekly_sales cws;
 ```
 
-Result
+Result:
 ![table1](results/Table1.png)
+
 What range of week numbers are missing from the dataset?
 ```sql
 WITH cte_all_weeks AS ( 
@@ -86,8 +87,9 @@ WHERE week_number NOT IN (
     )
 ORDER BY week_number;
 ```
-Result
+Result:
 ![table2](results/Table2.png)
+
 How many total transactions were there for each year in the dataset?
 ```sql
 SELECT
@@ -97,8 +99,10 @@ FROM clean_weekly_sales
 GROUP BY calendar_year
 ORDER BY calendar_year;
 ```
-Result
-![table3](results/Table3.png)
+
+Result:
+![table3](results/table3.png)
+
 What is the total sales for each region for each month?
 ```sql
 SELECT 
@@ -142,7 +146,7 @@ SELECT
 FROM platform_cte ; 
 ```
 Result
-![table6](results/Table6.png)
+![table6](results/table6.png)
 What is the percentage of sales by demographic for each year in the dataset?
 ```sql
 SELECT 
@@ -155,7 +159,7 @@ GROUP BY calendar_year ,demographic
 ORDER BY calendar_year ,demographic ;
 ```
 Result
-![table7](results/Table7.png)
+![table7](results/table7.png)
 Which age_band and demographic values contribute the most to Retail sales?
 ```sql
 SELECT 
@@ -169,7 +173,7 @@ GROUP BY age_band, demographic
 ORDER BY total_sales desc;
 ```
 Result
-![table8](results/Table8.png)
+![table8](results/table8.png)
 Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
 ```sql
 SELECT
@@ -182,7 +186,7 @@ GROUP BY platform,calendar_year
 ORDER BY platform,calendar_year
 ```
 Result
-![table9](results/Table9.png)
+![table9](results/table9.png)
 ## 3. Before & After Analysis
 This technique is usually used when we inspect an important event and want to inspect the impact before and after a certain point in time.
 
@@ -218,7 +222,7 @@ SELECT
 FROM cte_summary;
 ```
 Result
-![table10](results/Table10.png)
+![table10](results/table10.png)
 What about the entire 12 weeks before and after?
 ```sql
 WITH cte_summary AS(
@@ -238,7 +242,7 @@ SELECT
 FROM cte_summary;
 ```
 Result
-![table11](results/Table11.png)
+![table11](results/table11.png)
 How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?
 for four weeks:
 ```sql
@@ -266,7 +270,7 @@ order by
 	calendar_year;
 ```
 Result
-![table12](results/Table12.png)
+![table12](results/table12.png)
 For 12 weeks
 ```sql
 with cte_summary as(
@@ -293,4 +297,4 @@ order by
 	calendar_year;
 ```
 Result
-![table13](results/Table13.png)
+![table13](results/table13.png)

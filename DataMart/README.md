@@ -34,7 +34,7 @@ Ensure all null string values with an "unknown" string value in the original seg
 
 Generate a new avg_transaction column as the sales value divided by transactions rounded to 2 decimal places for each record
 
-[table0](https://github.com/EwaoluwaO/8-week-sql-challenge/blob/a5d564b93f880c21abbf7c909ef04de5a07d4eb3/DataMart/results/Table0.png)
+![table0](DataMart/results/Table0.png)
 
 ## 2. Data Exploration
 What day of the week is used for each week_date value?

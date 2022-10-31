@@ -33,7 +33,28 @@ F	Families
 Ensure all null string values with an "unknown" string value in the original segment column as well as the new age_band and demographic columns
 
 Generate a new avg_transaction column as the sales value divided by transactions rounded to 2 decimal places for each record
-
+Solution:
+```sql
+create table clean_weekly_sales as select to_date(week_date, 'DD/MM/YY') as week_date,
+		extract (week from (to_date(week_date, 'DD/MM/YY'))) as week_number,
+		extract (month from (to_date(week_date, 'DD/MM/YY'))) as month_number,
+		extract (year from (to_date(week_date, 'DD/MM/YY'))) as calendar_year,
+		(case when segment like '%1' then 'Young Adults'
+			when segment like '%2' then 'Middle Aged'
+			when segment = 'null' then 'unknown'
+			else 'Retires'
+			end) as age_band,
+		region,platform,customer_type,
+		(case when segment like 'C%' then 'Couples'
+			when segment like 'F%' then 'Family'
+			when segment = 'null' then 'unknown'
+			else 'error'
+			end) as demographic,
+		transactions,sales,
+		round(sales/transactions::numeric,2) as avg_transactions
+from weekly_sales ws;
+```
+Result:
 ![table0](results/Table0.png)
 
 ## 2. Data Exploration

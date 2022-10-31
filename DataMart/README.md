@@ -118,6 +118,7 @@ ORDER BY calendar_year,month_number;
 ```
 Result
 ![table4](results/Table4.png)
+
 What is the total count of transactions for each platform
 ```sql
 SELECT
@@ -128,6 +129,7 @@ GROUP BY platform;
 ```
 Result
 ![table5](results/Table5.png)
+
 What is the percentage of sales for Retail vs Shopify for each month?
 ```sql
 WITH platform_cte AS( 
@@ -149,6 +151,7 @@ FROM platform_cte ;
 ```
 Result
 ![table6](results/table6.png)
+
 What is the percentage of sales by demographic for each year in the dataset?
 ```sql
 SELECT 
@@ -162,6 +165,7 @@ ORDER BY calendar_year ,demographic ;
 ```
 Result
 ![table7](results/table7.png)
+
 Which age_band and demographic values contribute the most to Retail sales?
 ```sql
 SELECT 
@@ -176,6 +180,7 @@ ORDER BY total_sales desc;
 ```
 Result
 ![table8](results/table8.png)
+
 Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
 ```sql
 SELECT
@@ -189,6 +194,7 @@ ORDER BY platform,calendar_year
 ```
 Result
 ![table9](results/table9.png)
+
 ## 3. Before & After Analysis
 This technique is usually used when we inspect an important event and want to inspect the impact before and after a certain point in time.
 
@@ -199,7 +205,9 @@ We would include all week_date values for 2020-06-15 as the start of the period 
 Using this analysis approach - answer the following questions:
 
 What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?
+
 we first need to find out what week 2020-06-15 lies in.
+
 ```sql
 SELECT 
     DATE_PART('week','2020-06-15'::DATE) week_number;
@@ -225,6 +233,7 @@ FROM cte_summary;
 ```
 Result
 ![table10](results/table10.png)
+
 What about the entire 12 weeks before and after?
 ```sql
 WITH cte_summary AS(
@@ -245,6 +254,7 @@ FROM cte_summary;
 ```
 Result
 ![table11](results/table11.png)
+
 How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?
 for four weeks:
 ```sql
@@ -271,9 +281,13 @@ group by
 order by
 	calendar_year;
 ```
+
 Result
+
 ![table12](results/table12.png)
+
 For 12 weeks
+
 ```sql
 with cte_summary as(
 select
@@ -298,5 +312,6 @@ group by
 order by
 	calendar_year;
 ```
+
 Result
 ![table13](results/table13.png)

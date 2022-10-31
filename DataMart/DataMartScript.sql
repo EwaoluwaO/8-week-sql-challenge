@@ -125,8 +125,8 @@ FROM cte_summary;
 WITH cte_summary AS(
 SELECT
     week_number,
-    SUM(CASE WHEN week_number BETWEEN 21 AND 24 THEN sales ELSE 0 END) sales_before,
-    SUM(CASE WHEN week_number BETWEEN 25 AND 28 THEN sales ELSE 0 END) sales_after
+    SUM(CASE WHEN week_number BETWEEN 13 AND 24 THEN sales ELSE 0 END) sales_before,
+    SUM(CASE WHEN week_number BETWEEN 25 AND 36 THEN sales ELSE 0 END) sales_after
 FROM clean_weekly_sales
 WHERE calendar_year = '2020' 
 GROUP BY week_number

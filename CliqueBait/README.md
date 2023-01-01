@@ -14,5 +14,5 @@ Database Relationship
 ![table1](results/'Relationship diagram'.png)
 
 Result:
-![table1](results/Result table.png)
+![table1](results/Result%20table.png)
 

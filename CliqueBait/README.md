@@ -1,4 +1,4 @@
-# DataMart
+# CliqueBait
 5th case study of the 8 week sql challenge
 
 query written in Postgres
@@ -10,7 +10,7 @@ Study case details and questions: https://8weeksqlchallenge.com/case-study-6/
 
 View the Solution script [here](https://github.com/EwaoluwaO/8-week-sql-challenge/blob/fc97a56282fb062f915f7da75b18fbad6ea7e19d/DataMart/Cliquebaitscript.sql)
 
-Database Relationship
+## Enterprise Relationship Diagram
 ![table1](results/Relationship%20diagram.png)
 
 Generate a table that has 1 single row for every unique visit_id record and has the following columns:
@@ -24,7 +24,7 @@ Generate a table that has 1 single row for every unique visit_id record and has 
 `campaign_name`: map the visit to a campaign if the visit_start_time falls between the start_date and end_date
 `impression`: count of ad impressions for each visit
 `click`: count of ad clicks for each visit
-(Optional column) `cart_products: a comma separated text value with products added to the cart sorted by the order they were added to the cart (hint: use the sequence_number)
+(Optional column) `cart_products`: a comma separated text value with products added to the cart sorted by the order they were added to the cart (hint: use the sequence_number)
 
 ```sql
 select 
@@ -48,5 +48,5 @@ left join clique_bait.page_hierarchy AS p
 group by u.user_id, e.visit_id, c.campaign_name;
 ```
 Result:
-![table1](results/Result%20table.png)
+![ResultTable](results/Result%20table.png)
 

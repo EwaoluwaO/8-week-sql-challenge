@@ -60,3 +60,6 @@ group by u.user_id, e.visit_id, c.campaign_name;
 Result:
 ![ResultTable](results/Result%20table.png)
 
+Use the subsequent dataset to generate at least 5 insights for the Clique Bait team - bonus: prepare a single A4 infographic that the team can use for their management reporting sessions, be sure to emphasise the most important points from your findings.
+
+![ResultrEPORT](results/REPORT.png)
